@@ -6,11 +6,11 @@ import org.junit.runners.Parameterized;
 
 import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
-public class LionTestParametrized {
+public class LionParametrizedTest {
 
     private final String sex;
     private final boolean expectedHasMane;
-    public LionTestParametrized(String sex, boolean expectedHasMane) {
+    public LionParametrizedTest(String sex, boolean expectedHasMane) {
         this.sex = sex;
         this.expectedHasMane = expectedHasMane;
     }
@@ -18,8 +18,8 @@ public class LionTestParametrized {
     @Parameterized.Parameters(name = "Пол: {0} Есть ли грива: {1}")
     public static Object[][] doesHaveMane() {
         return new Object[][] {
-                {"Самец", true},
                 {"Самка", false},
+                {"Самец", true}
         };
     }
     @Test
@@ -27,5 +27,9 @@ public class LionTestParametrized {
         Lion lion = new Lion(sex, feline);
         boolean actualHasMane = lion.doesHaveMane();
         assertEquals(expectedHasMane, actualHasMane);
+    }
+
+    @Test
+    public void testDoesHaveMane1() {
     }
 }
